@@ -3,12 +3,12 @@ on:
     branches: [master]
 
 jobs:
-  trigger:
-    uses: nevivurn/cd-test-config/.github/workflows/app-token.yaml@master
+  deploy:
+    uses: nevivurn/cd-test-config/.github/workflows/deploy-application.yaml@master
     with:
       app-id: 362932
       application: ${{ github.repository }}
       image: 'soomething'
-      tag: '1236'
+      tag: '1237'
     secrets:
       app-secret: ${{ secrets.APP_SECRET }}
