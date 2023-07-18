@@ -1,0 +1,13 @@
+on:
+  push:
+    branches: [master]
+
+jobs:
+  trigger:
+    uses: nevivurn/cd-test-config/.github/workflows/trigger-patch.yaml@master
+    with:
+      application: ${{ github.repository }}
+      image: 'soomething'
+      tag: '1234'
+    secrets:
+      github-token: ${{ secrets.TOKEN }}
