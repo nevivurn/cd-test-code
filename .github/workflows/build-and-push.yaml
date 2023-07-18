@@ -1,3 +1,5 @@
+name: Build and push
+
 on:
   push:
     branches: [master]
@@ -6,6 +8,7 @@ jobs:
   deploy:
     uses: nevivurn/cd-test-config/.github/workflows/deploy-application.yaml@master
     with:
+      app-name: cd-deployments
       app-id: 362932
       application: ${{ github.repository }}
       image: 'soomething'
