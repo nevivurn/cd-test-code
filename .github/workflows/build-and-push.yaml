@@ -5,13 +5,25 @@ on:
     branches: [master]
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.build.outputs.image-name }}
+      tag: ${{ steps.build.outputs.image-tag }}
+    steps:
+      - id: build
+        run: |
+          echo "image-name=my-image" >> "$GITHUB_OUTPUT"
+          echo "image-tag=1234" >> "$GITHUB_OUTPUT"
+
   deploy:
+    needs: build
     uses: nevivurn/cd-test-config/.github/workflows/deploy-application.yaml@master
     with:
       app-name: cd-deployments
       app-id: 362932
       application: ${{ github.repository }}
-      image: 'soomething'
-      tag: '1240'
+      image: ${{ needs.build.outputs.image }}
+      tag: ${{ needs.build.outputs.tag }}
     secrets:
       app-secret: ${{ secrets.APP_SECRET }}
