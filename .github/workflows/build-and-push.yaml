@@ -12,6 +12,6 @@ jobs:
       app-id: 362932
       application: ${{ github.repository }}
       image: 'soomething'
-      tag: '1239'
+      tag: '1240'
     secrets:
       app-secret: ${{ secrets.APP_SECRET }}
