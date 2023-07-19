@@ -20,10 +20,9 @@ jobs:
     needs: build
     uses: nevivurn/cd-test-config/.github/workflows/deploy-application.yaml@master
     with:
-      app-name: cd-deployments
-      app-id: 362932
       application: ${{ github.repository }}
       image: ${{ needs.build.outputs.image }}
       tag: ${{ needs.build.outputs.tag }}
     secrets:
+      app-id: '362932'
       app-secret: ${{ secrets.APP_SECRET }}
